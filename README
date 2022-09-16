@@ -1,0 +1,19 @@
+= David's Idle Timeout Datapack
+
+:wiki: https://minecraft.fandom.com/wiki/Commands/datapack
+
+This is a very simple datapack that automatically shuts off a minecraft server when no one has been online for 30 minutes. If a player joins, the timer is reset.
+
+This will require `function-permission-level=4` in `server.properties` in order for the datapack to use the `stop` command.
+
+You can look to the right and find the latest version. Download the zip, and place in your world's `datapacks` folder. You may need to run the `reload` command for it to take effect, or you may need to enable it.
+Check out the {wiki}[wiki] for more help with datapacks.
+
+This datapack should work just fine on new Minecraft versions as they are released.
+
+== Customization
+To change how much time a server is online for once everyone logs out, go into `data/idle_timeout/functions/clock_30s.mcfunction` and on line 6, instead of `matches 60..`, replace `60` with *twice* the number of minutes you want.
+
+The datapack checks every 30 seconds if people are online or not, so while you could set this value to 0, it may still take up to 30s sometimes for the server to shutdown. This is also why you must double the number of minutes.
+
+The two dots after the number means that if for some reason the clock ever keeps counting past the number, it will be caught. Think of `matches 60` as "equals 60", while `matches 60..` is "greater than or equal to 60".
